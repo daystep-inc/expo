@@ -83,6 +83,12 @@ class CameraVideoRecording: NSObject, AVCaptureFileOutputRecordingDelegate {
       videoFileOutput.maxRecordedFileSize = Int64(maxFileSize)
     }
 
+    // フレームレート設定を追加
+    if let frameRate = options.frameRate {
+      connection.videoMaxFrameDuration = CMTime(value: 1, timescale: CMTimeScale(frameRate))
+      connection.videoMinFrameDuration = CMTime(value: 1, timescale: CMTimeScale(frameRate))
+    }
+
     if let codec = options.codec {
       let codecType = codec.codecType()
       if videoFileOutput.availableVideoCodecTypes.contains(codecType) {

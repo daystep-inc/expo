@@ -214,6 +214,12 @@ export type CameraRecordingOptions = {
    * @platform ios
    */
   codec?: VideoCodec;
+  /**
+   * The desired frame rate for video recording in frames per second.
+   * @example 30, 60
+   * @platform ios
+   */
+  frameRate?: number;
 };
 
 /**
